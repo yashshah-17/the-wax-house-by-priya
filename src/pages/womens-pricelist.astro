@@ -166,7 +166,10 @@ const treatments = [
       <nav class="category-nav" aria-label="Women's service categories">
         {treatments.map((item) => (
           <a href={`#${item.id}`}>
-            {item.title} <span>↘</span>
+            {item.title}{" "}
+            <span>
+              <Icon name="arrowDown" />
+            </span>
           </a>
         ))}
       </nav>
@@ -190,7 +193,9 @@ const treatments = [
           <article class="treatment-card">
             <div class="card-heading">
               <span class="eyebrow">SERVICE MENU / {item.number}</span>
-              <span class="card-flower">✳</span>
+              <span class="card-flower">
+                <Icon name="asterisk" />
+              </span>
             </div>
             <h2>
               {item.title === "Facial Treatments" ? (
@@ -235,7 +240,10 @@ const treatments = [
             </div>
             <p class="price-note"></p>
             <a class="button" href={`${import.meta.env.BASE_URL}/#contact`}>
-              ENQUIRE & BOOK <span>↗</span>
+              ENQUIRE & BOOK{" "}
+              <span>
+                <Icon name="arrowRight" />
+              </span>
             </a>
           </article>
         </div>
@@ -248,13 +256,18 @@ const treatments = [
       </h2>
       <p></p>
       <a class="button" href={`${import.meta.env.BASE_URL}/#contact`}>
-        LET'S TALK <span>↗</span>
+        LET'S TALK{" "}
+        <span>
+          <Icon name="arrowRight" />
+        </span>
       </a>
     </section>
     <section class="closing-banner">
       <div class="closing-message">
         <span>TAKE A BREATH</span>
-        <span class="closing-flower">✳</span>
+        <span class="closing-flower">
+          <Icon name="asterisk" />
+        </span>
         <span>YOU DESERVE THIS</span>
       </div>
 
@@ -513,6 +526,10 @@ const treatments = [
   .button:hover {
     background: #694948;
   }
+  .button span {
+    position: relative;
+    top: 1px;
+  }
   .hero-ornament {
     position: absolute;
     z-index: 2;
@@ -561,6 +578,8 @@ const treatments = [
     font-size: 11px;
   }
   .category-nav a span {
+    position: relative;
+    top: 1px;
     margin-left: 8px;
     color: #a07170;
   }
@@ -630,7 +649,7 @@ const treatments = [
     font-size: 9px;
   }
   .card-flower {
-    font-size: 25px;
+    font-size: 22px;
     color: #bd9994;
   }
   .treatment-card h2 {
@@ -732,7 +751,9 @@ const treatments = [
   }
 
   .closing-flower {
-    font-size: 25px;
+    top: 2px;
+    position: relative;
+    font-size: 16px;
     color: #e0d7c8;
   }
 
@@ -831,7 +852,9 @@ const treatments = [
     }
 
     .closing-flower {
-      font-size: 20px;
+      position: relative;
+      top: 2px;
+      font-size: 12px;
     }
 
     .closing-socials {
