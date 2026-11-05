@@ -63,7 +63,12 @@ const men = [
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="The Wax House home">
         <span class="brand-mark">
-          <img src="/logo.png" alt="The Wax House" width="auto" height="60" />
+          <img
+            src={`${import.meta.env.BASE_URL}/logo.png`}
+            alt="The Wax House"
+            width="auto"
+            height="60"
+          />
         </span>
         <span class="brand-name">
           The Wax House <small>by Priya</small>
@@ -85,8 +90,10 @@ const men = [
       </button>
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
-      <a href="/womens-pricelist">Women's Pricelist</a>
-      <a href="/mens-pricelist">Men's Pricelist</a>
+      <a href={`${import.meta.env.BASE_URL}/womens-pricelist`}>
+        Women's Pricelist
+      </a>
+      <a href={`${import.meta.env.BASE_URL}/mens-pricelist`}>Men's Pricelist</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
@@ -197,7 +204,7 @@ const men = [
               <p>Thoughtful treatments, tailored to you</p>
             </div>
             <a
-              href="/womens-pricelist"
+              href={`${import.meta.env.BASE_URL}/womens-pricelist`}
               class="button button--outline price-button"
             >
               VIEW WOMEN'S MENU <span>↗</span>
@@ -214,7 +221,10 @@ const men = [
               </h3>
               <p>Good grooming, no fuss</p>
             </div>
-            <a href="/mens-pricelist" class="button price-button">
+            <a
+              href={`${import.meta.env.BASE_URL}/mens-pricelist`}
+              class="button price-button"
+            >
               VIEW MEN'S MENU <span>↗</span>
             </a>
           </article>
