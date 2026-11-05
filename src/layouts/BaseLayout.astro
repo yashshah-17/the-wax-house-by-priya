@@ -1,0 +1,151 @@
+---
+const {
+  title = "The Wax House by Priya",
+  description = "A little self-care goes a long way",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f5ef" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    --cream: #f8f5ef;
+    --paper: #fffdf9;
+    --ink: #282b26;
+    --muted: #74766d;
+    --sage: #9ca895;
+    --sage-dark: #596652;
+    --rose: #ead9d2;
+    --line: #e7e2d8;
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "DM Sans", Arial, sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+  }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: #d7dfd0;
+    color: var(--ink);
+  }
+  .container {
+    width: min(1160px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--sage-dark);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .eyebrow:before {
+    content: "";
+    width: 25px;
+    height: 1px;
+    background: currentColor;
+  }
+  .section-title {
+    font: 400 clamp(2.3rem, 5vw, 4rem)/1.12 var(--serif);
+    letter-spacing: -0.035em;
+    margin: 14px 0;
+  }
+  .section-copy {
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 21px;
+    background: var(--sage-dark);
+    color: white;
+    border: 1px solid var(--sage-dark);
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition:
+      transform 0.2s,
+      background 0.2s;
+  }
+  .button:hover {
+    background: #414d3d;
+    transform: translateY(-2px);
+  }
+  .button--outline {
+    background: transparent;
+    color: var(--ink);
+    border-color: #b7b8ac;
+  }
+  .button--outline:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .section-pad {
+    padding: 104px 0;
+  }
+  @media (max-width: 700px) {
+    .container {
+      width: min(100% - 32px, 1160px);
+    }
+    .section-pad {
+      padding: 72px 0;
+    }
+  }
+</style>

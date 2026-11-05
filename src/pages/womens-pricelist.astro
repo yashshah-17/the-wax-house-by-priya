@@ -1,0 +1,843 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+const treatments = [
+  {
+    id: "threading",
+    number: "01",
+    title: "Threading",
+    intro: "Beautifully defined brows and precise facial detailing",
+    color: "blush",
+    image: "https://images.unsplash.com/photo-1733145820348-042a1ae7682a",
+    items: [
+      ["Eyebrow", "$7"],
+      ["Forehead", "$3"],
+      ["Upper lips", "$3"],
+      ["Chin", "$3+"],
+      ["Sideburns", "$5"],
+      ["Full face", "$17"],
+    ],
+  },
+  {
+    id: "face-waxing",
+    number: "02",
+    title: "Face Waxing",
+    intro: "A smooth, polished finish with careful attention to detail",
+    color: "lavender",
+    // image: "photo-1512290923902-8a9f81dc236c",
+    image: "https://images.unsplash.com/photo-1761718210055-e83ca7e2c9ad",
+    items: [
+      ["Full face + Neck (Soft wax)", "$20"],
+      ["Full face (Hard wax)", "$25"],
+      ["Full face + Neck (Hard wax)", "$30"],
+    ],
+  },
+  {
+    id: "body-waxing",
+    number: "03",
+    title: "Body Waxing",
+    intro: "From a quick refresh to head-to-toe smoothness",
+    color: "peach",
+    image: "https://images.pexels.com/photos/6763618/pexels-photo-6763618.jpeg",
+    items: [
+      ["Full legs", "$25"],
+      ["Half legs", "$20"],
+      ["Full arms", "$20"],
+      ["Underarms (Soft wax)", "$5"],
+      ["Underarms (Hard wax)", "$10"],
+      ["Stomach", "$15"],
+      ["Full back", "$20"],
+      ["Half back", "$15"],
+    ],
+  },
+  {
+    id: "intimate",
+    number: "04",
+    title: "Intimate & Specialty Waxing",
+    intro:
+      "Private, professional care with comfort and discretion at every step",
+    color: "sage",
+    image: "https://images.pexels.com/photos/8528273/pexels-photo-8528273.jpeg",
+    items: [
+      ["Brazilian", "$30"],
+      ["Bikini line", "$10"],
+      ["Buttocks", "$10"],
+      ["Full body wax", "$90"],
+    ],
+  },
+  {
+    id: "facials",
+    number: "05",
+    title: "Facial Treatments",
+    intro: "A little reset for skin that needs a moment of care",
+    color: "rose",
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881",
+    items: [
+      {
+        name: "Glow & Go express (20 min)",
+        price: "$25",
+        description: "Quick refresh for natural glow.",
+      },
+      {
+        name: "Herbal facial (50 min)",
+        price: "$55",
+        description: "Soothing and nourishing with natural ingredients.",
+      },
+      {
+        name: "Glass skin facial (40 min)",
+        price: "$45",
+        description: "For smooth, radiant and luminous skin.",
+      },
+      {
+        name: "Fruit facial (45 min)",
+        price: "$55",
+        description: "Rejuvenates and brightens the skin.",
+      },
+      {
+        name: "Relax & Rejuvenate facial (50 min)",
+        price: "$60",
+        description: "Deep cleansing, relaxation and renewal.",
+      },
+      {
+        name: "The Wax House Signature glow (60 min)",
+        price: "$75",
+        description: "Our most complete facial for a healthy, radiant glow.",
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Women's Pricelist — The Wax House by Priya"
+  description="Facial treatments, threading, face waxing, body waxing and specialty waxing at The Wax House by Priya"
+>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="The Wax House home">
+        <span class="brand-mark">
+          <img src="/logo.png" alt="The Wax House" width="auto" height="60" />
+        </span>
+        <span class="brand-name">
+          The Wax House <small>by Priya</small>
+        </span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="/#intro">Our work</a>
+        <a href="/#services">Services</a>
+        <a href="/mens-pricelist">Men's Pricelist</a>
+        <a href="/#contact">Contact us</a>
+      </nav>
+      <button
+        class="menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="/">Home</a>
+      <a href="/mens-pricelist">Men's Pricelist</a>
+      <a href="/#services">Services</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </header>
+
+  <main class="women-page">
+    <section class="women-intro">
+      <span class="eyebrow">LESS STRESS, MORE GLOW</span>
+      <h2>
+        Find your <em>feel-good ritual.</em>
+      </h2>
+      <nav class="category-nav" aria-label="Women's service categories">
+        {treatments.map((item) => (
+          <a href={`#${item.id}`}>
+            {item.title} <span>↘</span>
+          </a>
+        ))}
+      </nav>
+    </section>
+    {treatments.map((item, i) => (
+      <section
+        class={`treatment-section ${item.color} ${i % 2 ? "reverse" : ""}`}
+        id={item.id}
+      >
+        <div class="treatment-inner">
+          <div class="treatment-photo">
+            <img
+              src={`${item.image}?auto=format&fit=crop&w=1100&q=85`}
+              alt={item.intro}
+              loading="lazy"
+            />
+            <span class="photo-number">
+              {item.number} / THE WAX HOUSE RITUALS
+            </span>
+          </div>
+          <article class="treatment-card">
+            <div class="card-heading">
+              <span class="eyebrow">SERVICE MENU / {item.number}</span>
+              <span class="card-flower">✳</span>
+            </div>
+            <h2>
+              {item.title === "Facial Treatments" ? (
+                <>
+                  Facial <em>Treatments</em>
+                </>
+              ) : item.title === "Face Waxing" ? (
+                <>
+                  Face <em>Waxing</em>
+                </>
+              ) : item.title === "Body Waxing" ? (
+                <>
+                  Body <em>Waxing</em>
+                </>
+              ) : item.title === "Threading" ? (
+                <>Threading</>
+              ) : (
+                <>
+                  Intimate & <em>Specialty Waxing</em>
+                </>
+              )}
+            </h2>
+            <p class="card-intro">{item.intro}</p>
+            <div class="service-list">
+              {item.items.map((service) => (
+                <div
+                  class={`service-row ${item.id === "facials" ? "facial-row" : ""}`}
+                >
+                  <div class="service-info">
+                    <span class="service-name">
+                      {"name" in service ? service.name : service[0]}
+                    </span>
+
+                    {"description" in service && (
+                      <p class="service-description">{service.description}</p>
+                    )}
+                  </div>
+
+                  <b>{"price" in service ? service.price : service[1]}</b>
+                </div>
+              ))}{" "}
+            </div>
+            <p class="price-note"></p>
+            <a class="button" href="/#contact">
+              ENQUIRE & BOOK <span>↗</span>
+            </a>
+          </article>
+        </div>
+      </section>
+    ))}
+    <section class="women-cta">
+      <span class="eyebrow">NOT SURE WHERE TO START?</span>
+      <h2>
+        We'll find your <em>perfect fit.</em>
+      </h2>
+      <p></p>
+      <a class="button" href="/#contact">
+        LET'S TALK <span>↗</span>
+      </a>
+    </section>
+    <section class="closing-banner">
+      <div class="closing-message">
+        <span>TAKE A BREATH</span>
+        <span class="closing-flower">✳</span>
+        <span>YOU DESERVE THIS</span>
+      </div>
+
+      <div class="closing-socials">
+        <a
+          href="https://www.instagram.com/priya_waxing_threading/"
+          target="_blank"
+          aria-label="Visit us on Instagram"
+          class="social-icon"
+        >
+          <Icon name="instagram" />
+        </a>
+
+        <a
+          href="https://share.google/JUisi5eQ3ja0UxnFd"
+          target="_blank"
+          aria-label="Check us out on Google"
+          class="social-icon"
+        >
+          <Icon name="google" />
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const toggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu",
+    );
+    if (menu) menu.hidden = !open;
+    document.body.classList.toggle("menu-open", open);
+  });
+  menu?.querySelectorAll("a").forEach((link) =>
+    link.addEventListener("click", () => {
+      menu.hidden = true;
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Open navigation menu");
+      document.body.classList.remove("menu-open");
+    }),
+  );
+</script>
+
+<style>
+  .site-header {
+    height: 82px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(248, 245, 239, 0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(231, 226, 216, 0.7);
+  }
+  .nav-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .brand-mark {
+    font: 500 35px/0.9 var(--serif);
+    position: relative;
+    color: var(--sage-dark);
+  }
+  .brand-mark span {
+    font: 12px var(--sans);
+    position: absolute;
+
+    right: -8px;
+    top: -4px;
+  }
+  .brand-name {
+    font-size: 14px;
+    letter-spacing: 0.19em;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .brand-name small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .desktop-nav {
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: 32px;
+  }
+  .desktop-nav a,
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .desktop-nav a {
+    color: #5e6058;
+    transition: color 0.2s;
+  }
+  .desktop-nav a:hover {
+    color: var(--sage-dark);
+    transform: scale(1.05);
+  }
+  .nav-cta {
+    border-bottom: 1px solid var(--sage-dark);
+    padding: 9px 0;
+  }
+  .nav-cta span {
+    margin-left: 8px;
+  }
+  .menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    height: 1px;
+    background: var(--ink);
+    display: block;
+    margin: 6px 0;
+    transition: transform 0.2s;
+  }
+  .menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+  .mobile-menu {
+    position: absolute;
+    top: 81px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    padding: 12px 24px 24px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 25px #3331;
+  }
+  .mobile-menu[hidden] {
+    display: none;
+  }
+  .mobile-menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    font: 24px var(--serif);
+  }
+  .mobile-menu a span {
+    font: 15px var(--sans);
+    color: var(--sage-dark);
+  }
+  .women-page {
+    background: #fffaf7;
+  }
+  .women-hero {
+    min-height: 510px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #eadbd9;
+  }
+  .women-hero-image {
+    position: absolute;
+    inset: 0 0 0 43%;
+    overflow: hidden;
+  }
+  .women-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.72);
+  }
+  .women-hero:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #eadbd9 0%,
+      #eadbd9 36%,
+      rgba(234, 219, 217, 0.84) 49%,
+      rgba(234, 219, 217, 0) 75%
+    );
+    z-index: 1;
+  }
+  .women-hero-copy {
+    position: relative;
+    z-index: 2;
+    width: min(1120px, calc(100% - 48px));
+    margin: auto;
+    padding: 70px 0;
+  }
+  .eyebrow {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    color: #8c6667;
+    font-size: 10px;
+    letter-spacing: 0.17em;
+    font-weight: 700;
+  }
+  .eyebrow:before {
+    content: "";
+    height: 1px;
+    width: 24px;
+    background: currentColor;
+  }
+  .women-hero h1 {
+    font: 400 clamp(3.8rem, 7vw, 6.5rem)/0.99 var(--serif);
+    letter-spacing: -0.045em;
+    margin: 25px 0;
+    color: #302b2a;
+  }
+  .women-hero h1 em {
+    color: #946b6b;
+  }
+  .women-hero p {
+    max-width: 390px;
+    color: #5e5552;
+    font-size: 14px;
+    margin: 0 0 30px;
+  }
+  .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    background: #805e5d;
+    color: white;
+    border: 1px solid #805e5d;
+    padding: 14px 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .button:hover {
+    background: #694948;
+  }
+  .hero-ornament {
+    position: absolute;
+    z-index: 2;
+    right: 5%;
+    bottom: 24px;
+    font-size: 28px;
+    color: #fff8ef;
+  }
+  .women-intro {
+    background: #f7eee9;
+    text-align: center;
+    padding: 76px 24px 50px;
+  }
+  .women-intro .eyebrow {
+    color: #956d6a;
+  }
+  .women-intro h2,
+  .women-cta h2 {
+    font: 400 clamp(2.5rem, 5vw, 4rem)/1.1 var(--serif);
+    margin: 15px 0;
+  }
+  .women-intro h2 em,
+  .women-cta h2 em {
+    color: #a07170;
+  }
+  .women-intro > p,
+  .women-cta > p {
+    max-width: 570px;
+    color: #746b66;
+    font-size: 13px;
+    margin: 0 auto;
+  }
+  .category-nav {
+    max-width: 950px;
+    margin: 34px auto 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .category-nav a {
+    padding: 9px 13px;
+    border: 1px solid #dfc9c3;
+    background: #fffaf7;
+    color: #6b5551;
+    font-size: 11px;
+  }
+  .category-nav a span {
+    margin-left: 8px;
+    color: #a07170;
+  }
+  .treatment-section {
+    padding: 72px 24px;
+    background: #f4e2dd;
+  }
+  .treatment-section.lavender {
+    background: #e9e4ef;
+  }
+  .treatment-section.peach {
+    background: #f6e6d7;
+  }
+  .treatment-section.sage {
+    background: #e4e9df;
+  }
+  .treatment-section.rose {
+    background: #f0dfe1;
+  }
+  .treatment-inner {
+    width: min(1060px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    align-items: stretch;
+  }
+  .treatment-section.reverse .treatment-photo {
+    order: 2;
+  }
+  .treatment-photo {
+    position: relative;
+    min-height: 460px;
+    overflow: hidden;
+    background: #e3d6cf;
+  }
+  .treatment-photo img {
+    height: 100%;
+    min-height: 460px;
+    object-fit: cover;
+    filter: saturate(0.78);
+  }
+  .photo-number {
+    position: absolute;
+    left: 20px;
+    bottom: 17px;
+    color: white;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-shadow: 0 1px 8px #0008;
+  }
+  .treatment-card {
+    background: rgba(255, 253, 249, 0.9);
+    padding: clamp(28px, 4vw, 48px);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffffffa0;
+  }
+  .card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9dfd8;
+    padding-bottom: 15px;
+  }
+  .card-heading .eyebrow {
+    font-size: 9px;
+  }
+  .card-flower {
+    font-size: 25px;
+    color: #bd9994;
+  }
+  .treatment-card h2 {
+    font: 400 clamp(2.1rem, 3.2vw, 3.1rem)/1.08 var(--serif);
+    letter-spacing: -0.03em;
+    margin: 24px 0 12px;
+    color: #302b2a;
+  }
+  .treatment-card h2 em {
+    color: #a07170;
+    font-style: italic;
+  }
+  .card-intro {
+    font-size: 12px;
+    color: #766e68;
+    margin: 0 0 16px;
+  }
+  .service-list {
+    padding-top: 2px;
+  }
+  .service-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #e9dfd8;
+    font-size: 12px;
+    color: #393631;
+  }
+  .service-row b {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .service-name {
+    font-weight: 500;
+  }
+
+  .service-description {
+    margin: 0;
+    max-width: 310px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #817771;
+  }
+
+  .facial-row {
+    align-items: flex-start;
+    padding: 15px 0;
+  }
+
+  .facial-row b {
+    padding-top: 1px;
+  }
+
+  .price-note {
+    font-size: 10px;
+    color: #817771;
+    margin: 16px 0 20px;
+  }
+  .treatment-card .button {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+  .women-cta {
+    background: #f7eee9;
+    text-align: center;
+    padding: 85px 24px;
+  }
+  .women-cta .eyebrow {
+    color: #956d6a;
+  }
+  .women-cta .button {
+    margin-top: 27px;
+  }
+  .closing-banner {
+    position: relative;
+    min-height: 100px;
+    background: #626d5b;
+    color: #f7f4ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  .closing-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 5vw, 70px);
+  }
+
+  .closing-flower {
+    font-size: 25px;
+    color: #e0d7c8;
+  }
+
+  .closing-socials {
+    position: absolute;
+    right: 8%;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f7f4ed;
+    font-size: 19px;
+    text-decoration: none;
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .social-icon:hover {
+    color: #e0d7c8;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 700px) {
+    .site-header {
+      height: 70px;
+    }
+    .nav-wrap {
+      width: calc(100% - 32px);
+    }
+    .desktop-nav,
+    .nav-cta {
+      display: none;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .mobile-menu {
+      top: 69px;
+    }
+    .women-intro {
+      padding: 60px 16px 35px;
+    }
+    .category-nav {
+      gap: 7px;
+    }
+    .category-nav a {
+      font-size: 10px;
+      padding: 8px;
+    }
+    .treatment-section {
+      padding: 42px 16px;
+    }
+    .treatment-inner {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .treatment-section.reverse .treatment-photo {
+      order: 0;
+    }
+    .treatment-photo,
+    .treatment-photo img {
+      height: 300px;
+      min-height: 300px;
+    }
+    .treatment-card {
+      padding: 27px;
+    }
+    .treatment-card h2 {
+      font-size: 2.4rem;
+    }
+    .women-cta {
+      padding: 65px 18px;
+    }
+    .closing-banner {
+      min-height: 85px;
+      padding: 12px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+    }
+
+    .closing-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .closing-flower {
+      font-size: 20px;
+    }
+
+    .closing-socials {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-icon {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 900px) {
+    .desktop-nav {
+      gap: 17px;
+      margin-right: 22px;
+    }
+  }
+</style>

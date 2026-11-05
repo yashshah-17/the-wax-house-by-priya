@@ -1,0 +1,653 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+const waxing = [
+  ["Threading eyebrows", "$10"],
+  ["Full arms", "$30"],
+  ["Full legs", "$35"],
+  ["Stomach", "$35"],
+];
+const skincare = [
+  {
+    name: "Fresh and Hydrated facial",
+    price: "$50",
+    description:
+      "For dry and dehydrated skin. Aims to hydrate and nourish the skin for a dewy glow.",
+  },
+  {
+    name: "Bright and Fresh facial",
+    price: "$65",
+    description:
+      "All skin types. Aims to improve the appearance of uneven tone and dullness.",
+  },
+];
+---
+
+<BaseLayout
+  title="Men's Pricelist — The Wax House by Priya"
+  description="Men's waxing and skincare services at The Wax House by Priya"
+>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="The Wax House home">
+        <span class="brand-mark">
+          <img src="/logo.png" alt="The Wax House" width="auto" height="60" />
+        </span>
+        <span class="brand-name">
+          The Wax House <small>by Priya</small>
+        </span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="/#intro">Our work</a>
+        <a href="/#services">Services</a>
+        <a href="/womens-pricelist">Women's Pricelist</a>
+        <a href="/#contact">Contact us</a>
+      </nav>
+      <button
+        class="menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="/womens-pricelist">Women's Pricelist</a>
+      <a href="/">Home</a>
+      <a href="/#services">Services</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </header>
+
+  <main class="mens-page">
+    <section class="service-section" id="waxing">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">01 / SMOOTH & TIDY</span>
+          <h2>
+            Waxing <em>services.</em>
+          </h2>
+        </div>
+        <div class="service-layout">
+          <div class="service-image">
+            <img
+              src="https://hips.hearstapps.com/hmg-prod/images/mh-chest-wax-1533759591.png"
+              alt="The details make the difference"
+              loading="lazy"
+            />
+          </div>
+          <article class="price-card price-card-dark">
+            <div class="price-top">
+              <span class="price-icon">✳</span>
+              <span class="eyebrow">FOR HIM</span>
+              <h3>
+                Waxing
+                <br />
+                <em>services</em>
+              </h3>
+              <p>Quick, considered grooming from head to toe</p>
+            </div>
+            <div class="price-list">
+              {waxing.map(([name, price]) => (
+                <div class="price-row">
+                  <span>{name}</span>
+                  <b>{price}</b>
+                </div>
+              ))}
+            </div>
+            <p class="price-note"></p>
+            <a href="/#contact" class="button price-button">
+              ENQUIRE & BOOK <span>↗</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="service-section skincare-section" id="skincare">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">02 / HEALTHY-LOOKING SKIN</span>
+          <h2>
+            Skincare <em>rituals.</em>
+          </h2>
+        </div>
+        <div class="service-layout reverse">
+          <div class="service-image">
+            <img
+              src="https://blog.californiaskincaresupply.com/wp-content/uploads/2022/04/man-beard-get-facial-1024x684.jpg"
+              alt="A reset for your skin"
+              loading="lazy"
+            />
+          </div>
+          <article class="price-card price-card-dark">
+            <div class="price-top">
+              <span class="price-icon">✳</span>
+              <span class="eyebrow">SKIN, SIMPLIFIED</span>
+              <h3>
+                Skincare
+                <br />
+                <em>rituals</em>
+              </h3>
+              <p>Targeted treatments, tailored to your skin</p>
+            </div>
+            <div class="price-list">
+              {skincare.map((item) => (
+                <div class="price-row">
+                  <div class="price-item-info">
+                    <span class="price-item-name">{item.name}</span>
+                    <p class="price-item-description">{item.description}</p>
+                  </div>
+                  <b>{item.price}</b>
+                </div>
+              ))}
+            </div>
+            <p class="price-note"></p>
+            <a href="/#contact" class="button price-button">
+              ENQUIRE & BOOK <span>↗</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="closing-banner">
+      <div class="closing-message">
+        <span>TAKE A BREATH</span>
+        <span class="closing-flower">✳</span>
+        <span>YOU DESERVE THIS</span>
+      </div>
+
+      <div class="closing-socials">
+        <a
+          href="https://www.instagram.com/priya_waxing_threading/"
+          target="_blank"
+          aria-label="Visit us on Instagram"
+          class="social-icon"
+        >
+          <Icon name="instagram" />
+        </a>
+
+        <a
+          href="https://share.google/JUisi5eQ3ja0UxnFd"
+          target="_blank"
+          aria-label="Check us out on Google"
+          class="social-icon"
+        >
+          <Icon name="google" />
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const toggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#mobile-menu");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu",
+    );
+    if (menu) menu.hidden = !open;
+    document.body.classList.toggle("menu-open", open);
+  });
+  menu?.querySelectorAll("a").forEach((link) =>
+    link.addEventListener("click", () => {
+      menu.hidden = true;
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Open navigation menu");
+      document.body.classList.remove("menu-open");
+    }),
+  );
+</script>
+
+<style>
+  .site-header {
+    height: 82px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(248, 245, 239, 0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(231, 226, 216, 0.7);
+  }
+  .nav-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .brand-mark {
+    font: 500 35px/0.9 var(--serif);
+    position: relative;
+    color: var(--sage-dark);
+  }
+  .brand-mark span {
+    font: 12px var(--sans);
+    position: absolute;
+
+    right: -8px;
+    top: -4px;
+  }
+  .brand-name {
+    font-size: 14px;
+    letter-spacing: 0.19em;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .brand-name small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .desktop-nav {
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: 32px;
+  }
+  .desktop-nav a,
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .desktop-nav a {
+    color: #5e6058;
+    transition: color 0.2s;
+  }
+  .desktop-nav a:hover {
+    color: var(--sage-dark);
+    transform: scale(1.05);
+  }
+  .nav-cta {
+    border-bottom: 1px solid var(--sage-dark);
+    padding: 9px 0;
+  }
+  .nav-cta span {
+    margin-left: 8px;
+  }
+  .menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    height: 1px;
+    background: var(--ink);
+    display: block;
+    margin: 6px 0;
+    transition: transform 0.2s;
+  }
+  .menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+  .mobile-menu {
+    position: absolute;
+    top: 81px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    padding: 12px 24px 24px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 25px #3331;
+  }
+  .mobile-menu[hidden] {
+    display: none;
+  }
+  .mobile-menu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    font: 24px var(--serif);
+  }
+  .mobile-menu a span {
+    font: 15px var(--sans);
+    color: var(--sage-dark);
+  }
+  .mens-page {
+    --deep: #626d5b;
+    --deep-dark: #4b5746;
+  }
+  .container {
+    width: min(1120px, calc(100% - 48px));
+    margin: auto;
+  }
+  .eyebrow {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    color: #d9dfd1;
+    font-size: 10px;
+    letter-spacing: 0.17em;
+    font-weight: 700;
+  }
+  .eyebrow:before {
+    content: "";
+    height: 1px;
+    width: 24px;
+    background: currentColor;
+  }
+  .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    background: #e9e3d8;
+    color: #30362d;
+    border: 1px solid #e9e3d8;
+    padding: 14px 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .button:hover {
+    background: #fffdf9;
+  }
+  .service-section {
+    background: #e9e3d8;
+    padding: 95px 0;
+  }
+  .section-intro {
+    max-width: 600px;
+    margin: 0 auto 45px;
+    text-align: center;
+  }
+  .section-intro .eyebrow {
+    color: var(--sage-dark);
+  }
+  .section-intro h2 {
+    font: 400 clamp(2.6rem, 5vw, 4.3rem)/1.1 var(--serif);
+    margin: 16px 0;
+  }
+  .section-intro h2 em {
+    color: var(--sage-dark);
+  }
+  .section-intro p {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 440px;
+    margin: auto;
+  }
+  .service-layout {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    gap: 25px;
+    align-items: stretch;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .service-layout.reverse .service-image {
+    order: 2;
+  }
+  .service-image {
+    position: relative;
+    min-height: 480px;
+    background: #d5d8ce;
+    overflow: hidden;
+  }
+  .service-image img {
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    filter: saturate(0.78);
+  }
+  .service-image span {
+    position: absolute;
+    bottom: 18px;
+    left: 20px;
+    color: white;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-shadow: 0 1px 8px #0008;
+  }
+  .price-card {
+    background: var(--paper);
+    padding: clamp(28px, 4vw, 48px);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+  }
+  .price-card-dark {
+    background: var(--deep);
+    color: #fffdf9;
+    border-color: var(--deep);
+  }
+  .price-top {
+    position: relative;
+    border-bottom: 1px solid #ffffff35;
+    padding-bottom: 24px;
+  }
+  .price-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 27px;
+    color: #aebba3;
+  }
+  .price-top .eyebrow {
+    font-size: 9px;
+  }
+  .price-top h3 {
+    font: 400 42px/1.08 var(--serif);
+    letter-spacing: -0.025em;
+    margin: 15px 0;
+  }
+  .price-top h3 em {
+    color: #e0d7c8;
+  }
+  .price-top p {
+    font-size: 12px;
+    color: #e1e3db;
+    margin: 0;
+  }
+  .price-list {
+    padding-top: 10px;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid #ffffff30;
+    font-size: 12px;
+  }
+
+  .price-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .price-item-name {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .price-item-description {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #e1e3db;
+    margin: 0;
+    max-width: 300px;
+  }
+
+  .price-row b {
+    font-weight: 600;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .price-note {
+    font-size: 10px;
+    color: #d8ddcf;
+    margin: 17px 0;
+  }
+  .price-button {
+    width: 100%;
+    margin-top: auto;
+    background: #e9e3d8;
+    color: #30362d;
+  }
+  .skincare-section {
+    background: #e8eade;
+  }
+  .skincare-section .price-card {
+    background: #515e4c;
+    border-color: #515e4c;
+  }
+  .closing-banner {
+    position: relative;
+    min-height: 100px;
+    background: #626d5b;
+    color: #f7f4ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  .closing-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 5vw, 70px);
+  }
+
+  .closing-flower {
+    font-size: 25px;
+    color: #e0d7c8;
+  }
+
+  .closing-socials {
+    position: absolute;
+    right: 8%;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f7f4ed;
+    font-size: 19px;
+    text-decoration: none;
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .social-icon:hover {
+    color: #e0d7c8;
+    transform: translateY(-2px);
+  }
+  @media (max-width: 700px) {
+    .site-header {
+      height: 70px;
+    }
+    .nav-wrap {
+      width: calc(100% - 32px);
+    }
+    .desktop-nav,
+    .nav-cta {
+      display: none;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .mobile-menu {
+      top: 69px;
+    }
+    .container {
+      width: calc(100% - 32px);
+    }
+    .service-section {
+      padding: 70px 0;
+    }
+    .section-intro {
+      margin-bottom: 30px;
+    }
+    .service-layout {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .service-layout.reverse .service-image {
+      order: 0;
+    }
+    .service-image,
+    .service-image img {
+      min-height: 290px;
+      height: 320px;
+    }
+    .price-card {
+      padding: 27px;
+    }
+    .price-top h3 {
+      font-size: 38px;
+    }
+    .closing-banner {
+      min-height: 85px;
+      padding: 12px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+    }
+
+    .closing-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .closing-flower {
+      font-size: 20px;
+    }
+
+    .closing-socials {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-icon {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .desktop-nav {
+      gap: 17px;
+      margin-right: 22px;
+    }
+  }
+</style>
